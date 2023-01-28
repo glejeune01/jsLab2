@@ -1,5 +1,16 @@
+body {
+    background-color: antiquewhite;
+    font-family: sans-serif;
+}
+
 h1 {
     text-align: center;
+}
+
+h4 {
+    text-align: center;
+    margin-top: .5rem;
+    font-size: larger;
 }
 
 .buttonWrapper {
@@ -15,9 +26,68 @@ h1 {
     width: 17%;
 }
 
-.exerciseBox {
-    width: 80%;
-    height: 30rem;
+.exerciseContainer {
+    width: 50%;
     background-color: aqua;
     margin: auto;
+}
+
+.exerciseBox {
+
+}
+
+.exerciseTitle {
+    font-weight: bolder;
+    padding-top: .5rem;
+    margin-bottom: .5rem;
+}
+
+#inputBox {
+    display:grid;
+    row-gap: 1rem;
+    width: 80%;
+    height: 10rem;
+    margin: auto;
+    margin-bottom: 1rem;
+    background-color: red;
+}
+#outputBox {
+    width: 80%;
+    height: 10rem;
+    background-color: whitesmoke;
+    border: 2px dotted black;
+    margin: auto;
+}
+
+#userEntry{
+    margin: .5rem;
+}
+
+#userEntry:first-child {
+    grid-column: 2;
+    grid-row: 1;
+}
+#userEntry:last-child {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+label {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-weight: bold;
+    font-size: large;
+}
+
+label:first-child {
+    grid-column: 1;
+    grid-row: 1;
+}
+label:last-child {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.hide{
+    display: none;
 }
