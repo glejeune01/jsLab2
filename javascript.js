@@ -37,7 +37,7 @@ window.onload = function ()
                 break;
                 case "exerciseTwo": console.log("do a 2 dance");
                 break;
-                case "exerciseThree": console.log("do a 3 dance");
+                case "exerciseThree": console.log("do a 3 dance"); numberOfMatchingKeys();
                 break;
                 case "exerciseFour": console.log("do a 4 dance");
                 break;
@@ -102,6 +102,44 @@ function minMaxRange() {
         output.innerHTML = "Instructions: Please enter two numbers. Max must be greater then min.";
         outputBox.appendChild(output);
     }
-
   }
+
+  function numberOfMatchingKeys()
+  {
+      let outputBox = document.querySelector('#outputBoxThree');
+  
+      outputBox.innerHTML = "<h4>Output box</h4>";
+  
+      let firstEntry = document.querySelector('#inputBoxThree #userEntry:first-of-type');
+      let firstValues = firstEntry.value;
+      let commaSeperate = firstValues.split(",");
+
+      let secondEntry = document.querySelector('#inputBoxThree #userEntry:nth-of-type(2)');
+      let keyValue = secondEntry.value.toString();
+
+      if (firstValues !== "" && keyValue !== "")
+      {
+        let count = 0;
+
+        for(let i=0; i<commaSeperate.length; i++)
+        {
+            if (commaSeperate[i] === keyValue)
+            {
+                count++;
+            }
+        }
+        let output = document.createElement("p");
+        output.innerHTML = "Result: " + count;
+        outputBox.appendChild(output);
+        firstEntry.value = "";
+        secondEntry.value = "";
+    }
+    else 
+    {
+        let output = document.createElement("p");
+        output.innerHTML = "Instructions: Please enter comma seperated numbers, then a key number to query for the count.";
+        outputBox.appendChild(output);
+    }
+  }
+
   
