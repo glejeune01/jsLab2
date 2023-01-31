@@ -29,7 +29,7 @@ window.onload = function ()
         {
             switch (selectedButton)
             {
-                case "exerciseOne": console.log("do a 1 dance");
+                case "exerciseOne": console.log("do a 1 dance"); minMaxRange();
                 break;
                 case "exerciseTwo": console.log("do a 2 dance");
                 break;
@@ -60,3 +60,29 @@ window.onload = function ()
         });
     });
 }
+
+function minMaxRange() {
+    
+    let outputBox = document.querySelector('#outputBox');
+    outputBox.innerHTML = "";
+
+    let firstEntry = document.querySelector('#inputBox #userEntry:first-of-type');
+    let firstValue = parseInt(firstEntry.value);
+  
+    let secondEntry = document.querySelector('#inputBox #userEntry:nth-of-type(2)');
+    let secondValue = parseInt(secondEntry.value);
+  
+    let diffValue = secondValue - firstValue;
+    let newNumber;
+    let finalPrintout = firstValue.toString();
+  
+    for (let i = 1; i < diffValue; i++) {
+      newNumber = firstValue + i;
+      finalPrintout += ", " + newNumber.toString();
+    }
+
+    let output = document.createElement("p");
+    output.innerHTML = "Result: " + finalPrintout;
+    outputBox.appendChild(output);
+  }
+  
