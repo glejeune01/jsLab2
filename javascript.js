@@ -2,6 +2,13 @@ window.onload = function ()
 {
     let selectedButton;
     let buttons = document.querySelectorAll("button");
+    let exerciseContainer = document.getElementsByClassName("exerciseContainer")[0];
+    let allExerciseDivs = exerciseContainer.getElementsByClassName("exerciseBox");
+    
+    for(let i=0; i<allExerciseDivs.length; i++) 
+    {
+        allExerciseDivs[i].classList.add("hide");
+    }
     
     buttons.forEach(function(button) 
     {
@@ -9,15 +16,12 @@ window.onload = function ()
         {
         button.addEventListener("click", function() 
             {
-                let targetDivId = button.getAttribute("data-target");
-                let exerciseContainer = document.getElementsByClassName("exerciseContainer")[0];
-                let allExerciseDivs = exerciseContainer.getElementsByClassName("exerciseBox");
-                
                 for(let i=0; i<allExerciseDivs.length; i++) 
                 {
                     allExerciseDivs[i].classList.add("hide");
                 }
-                
+
+                let targetDivId = button.getAttribute("data-target");
                 let displayDiv = document.getElementById(targetDivId);
                 displayDiv.classList.remove("hide");
 
@@ -64,7 +68,8 @@ window.onload = function ()
 function minMaxRange() {
     
     let outputBox = document.querySelector('#outputBox');
-    outputBox.innerHTML = "";
+
+    outputBox.innerHTML = "<h4>Output box</h4>";
 
     let firstEntry = document.querySelector('#inputBox #userEntry:first-of-type');
     let firstValue = parseInt(firstEntry.value);
@@ -72,17 +77,31 @@ function minMaxRange() {
     let secondEntry = document.querySelector('#inputBox #userEntry:nth-of-type(2)');
     let secondValue = parseInt(secondEntry.value);
   
-    let diffValue = secondValue - firstValue;
-    let newNumber;
-    let finalPrintout = firstValue.toString();
-  
-    for (let i = 1; i < diffValue; i++) {
-      newNumber = firstValue + i;
-      finalPrintout += ", " + newNumber.toString();
+    if(firstEntry.value !== "" && secondEntry.value !== "")
+    {
+        let diffValue = secondValue - firstValue;
+        let newNumber;
+        let finalPrintout = firstValue.toString();
+    
+        for (let i = 1; i < diffValue; i++) 
+        {
+            newNumber = firstValue + i;
+            finalPrintout += ", " + newNumber.toString();
+        }
+
+        let output = document.createElement("p");
+        output.innerHTML = "Result: " + finalPrintout;
+        outputBox.appendChild(output);
+        firstEntry.value = "";
+        secondEntry.value = "";
     }
 
-    let output = document.createElement("p");
-    output.innerHTML = "Result: " + finalPrintout;
-    outputBox.appendChild(output);
+    else 
+    {
+        let output = document.createElement("p");
+        output.innerHTML = "Instructions: Please enter two numbers. Max must be greater then min.";
+        outputBox.appendChild(output);
+    }
+
   }
   
