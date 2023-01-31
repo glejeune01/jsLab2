@@ -1,6 +1,9 @@
+html,
 body {
-    background-color: antiquewhite;
+    background-image: linear-gradient(180deg, rgba(156, 252, 248, 1) 11.2%, rgba(110, 123, 251, 1) 91.1%);
     font-family: sans-serif;
+    overflow: auto;
+    height: 100%;
 }
 
 h1 {
@@ -23,43 +26,88 @@ h4 {
 }
 
 #button {
-    width: 17%;
+    width: 25%;
+    border: black 1px solid;
+    border-radius: .5rem;
+    height: 2rem;
+    font-size: larger;
+    font-weight: bold;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
+
+#button:hover {
+    background-color: black;
+    color: white;
+}
+
+#button:active {
+    transform: translateY(.1rem)
+}
+
+#process {
+    width: 80%;
+    justify-self: center;
+    border: black 1px solid;
+    border-radius: .5rem;
+    height: 2rem;
+    font-size: larger;
+    font-weight: bold;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    grid-row: 3;
+    grid-column: 2;
+
+
+}
+#process:hover {
+    background-color: black;
+    color: white;
+}
+
+#process:active {
+    transform: translateY(.1rem)
+}
+
+
 
 .exerciseContainer {
     width: 50%;
-    background-color: aqua;
     margin: auto;
 }
 
-.exerciseBox {
-
-}
+.exerciseBox {}
 
 .exerciseTitle {
     font-weight: bolder;
     padding-top: .5rem;
     margin-bottom: .5rem;
+    font-size: x-large;
+    text-align: center;
+
 }
 
 #inputBox {
-    display:grid;
+    display: grid;
     row-gap: 1rem;
     width: 80%;
-    height: 10rem;
+    height: 15rem;
     margin: auto;
     margin-bottom: 1rem;
-    background-color: red;
+    background-color: rgba(46, 47, 49, 0.859);
+    border: 2px solid black;
+    color: rgb(254, 254, 254);
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
+
 #outputBox {
     width: 80%;
     height: 10rem;
     background-color: whitesmoke;
     border: 2px dotted black;
     margin: auto;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
-#userEntry{
+#userEntry {
     margin: .5rem;
 }
 
@@ -67,6 +115,7 @@ h4 {
     grid-column: 2;
     grid-row: 1;
 }
+
 #userEntry:last-child {
     grid-column: 2;
     grid-row: 2;
@@ -76,18 +125,21 @@ label {
     text-align: center;
     margin-top: 1.5rem;
     font-weight: bold;
-    font-size: large;
+    font-size: larger;
+    text-shadow: 1px 1px 1px black;
+
 }
 
 label:first-child {
     grid-column: 1;
     grid-row: 1;
 }
+
 label:last-child {
     grid-column: 1;
     grid-row: 2;
 }
 
-.hide{
+.hide {
     display: none;
 }
