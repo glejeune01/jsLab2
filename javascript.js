@@ -1,8 +1,11 @@
 window.onload = function () {
+  
   let selectedButton;
   let buttons = document.querySelectorAll("button");
+
   let exerciseContainer =
-    document.getElementsByClassName("exerciseContainer")[0];
+  document.getElementsByClassName("exerciseContainer")[0];
+
   let allExerciseDivs = exerciseContainer.getElementsByClassName("exerciseBox");
 
   for (let i = 0; i < allExerciseDivs.length; i++) {
@@ -41,6 +44,7 @@ window.onload = function () {
           break;
         case "exerciseFour":
           console.log("do a 4 dance");
+          numStars();
           break;
         case "exerciseFive":
           console.log("do a 5 dance");
@@ -135,10 +139,12 @@ function comSepValues() {
     document.querySelector("#average").textContent = "Average: " + average;
     document.querySelector("#smallest").textContent = "Smallest: " + smallest;
     document.querySelector("#largest").textContent = "Largest: " + largest;
-  } else {
+  } 
+  else 
+  {
     let output = document.createElement("a");
     output.innerHTML =
-      "Instructions: Ask the user for a comma-separated set of numeric values. Display the number of values entered, the total, the average, the smallest value, and the largest value.";
+    "Instructions: Ask the user for a comma-separated set of numeric values. Display the number of values entered, the total, the average, the smallest value, and the largest value.";
     outputBox.appendChild(output);
   }
 }
@@ -180,4 +186,35 @@ function comSepValues() {
         outputBox.appendChild(output);
     }
   }
+
+  function numStars()
+{
+    let outputBox = document.querySelector('#outputBoxFour');
+    outputBox.innerHTML = "<h4>Output box</h4>";
+    
+    let entry = document.querySelector('#inputBoxFour #userEntry:first-of-type');
+    let value = entry.value;
+
+    if(value !== "")
+    {
+        let starString = "";
+
+        for(i=0; i<value; i++)
+        {
+            starString+= "*"
+        }
+
+        let output = document.createElement("p");
+        output.innerHTML = "Result: " +starString;
+        outputBox.appendChild(output);
+        entry.value = "";
+    }
+    else 
+    {
+        entry.value = "";
+        let output = document.createElement("p");
+        output.innerHTML = "Instructions: Please enter a number to turn into stars.";
+        outputBox.appendChild(output);
+    }
+}
 
