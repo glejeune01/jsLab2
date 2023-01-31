@@ -37,6 +37,7 @@ window.onload = function () {
           break;
         case "exerciseThree":
           console.log("do a 3 dance");
+          numberOfMatchingKeys();
           break;
         case "exerciseFour":
           console.log("do a 4 dance");
@@ -97,20 +98,22 @@ function minMaxRange() {
       newNumber = firstValue + i;
       finalPrintout += ", " + newNumber.toString();
     }
-  }
 
     let output = document.createElement("p");
     output.innerHTML = "Result: " + finalPrintout;
     outputBox.appendChild(output);
     firstEntry.value = "";
     secondEntry.value = "";
-  } else {
+  }
+
+  else {
     let output = document.createElement("p");
     output.innerHTML =
       "Instructions: Please enter two numbers. Max must be greater then min.";
     outputBox.appendChild(output);
   }
 }
+
 
 function comSepValues() {
   let outputBox = document.querySelector("#outputBox2");
@@ -177,3 +180,4 @@ function comSepValues() {
         outputBox.appendChild(output);
     }
   }
+
