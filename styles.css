@@ -85,7 +85,7 @@ h4 {
 
 }
 
-#inputBox {
+#inputBox,#inputBoxThree {
     display: grid;
     row-gap: 1rem;
     width: 80%;
@@ -98,13 +98,14 @@ h4 {
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
-#outputBox {
+#outputBox, #outputBoxThree{
     width: 80%;
     height: 10rem;
     background-color: whitesmoke;
     border: 2px dotted black;
     margin: auto;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    color: black;
 }
 
 #userEntry {
