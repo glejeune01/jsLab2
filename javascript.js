@@ -39,7 +39,7 @@ window.onload = function ()
                 break;
                 case "exerciseThree": console.log("do a 3 dance"); numberOfMatchingKeys();
                 break;
-                case "exerciseFour": console.log("do a 4 dance");
+                case "exerciseFour": console.log("do a 4 dance"); numStars();
                 break;
                 case "exerciseFive": console.log("do a 5 dance");
                 break;
@@ -104,8 +104,8 @@ function minMaxRange() {
     }
   }
 
-  function numberOfMatchingKeys()
-  {
+function numberOfMatchingKeys()
+{
       let outputBox = document.querySelector('#outputBoxThree');
   
       outputBox.innerHTML = "<h4>Output box</h4>";
@@ -140,6 +140,35 @@ function minMaxRange() {
         output.innerHTML = "Instructions: Please enter comma seperated numbers, then a key number to query for the count.";
         outputBox.appendChild(output);
     }
-  }
+}
+
+function numStars()
+{
+    let outputBox = document.querySelector('#outputBoxFour');
+    outputBox.innerHTML = "<h4>Output box</h4>";
+    
+    let entry = document.querySelector('#inputBoxFour #userEntry:first-of-type');
+    let value = firstEntry.value;
+
+    if(value !== "")
+    {
+        for(i=0; i<value; i++)
+        {
+            let starString =+ "*";
+            let output = document.createElement("p");
+            output.innerHTML = "Result: " + starString;
+            outputBox.appendChild(output);
+            entry.value = "";
+
+        }
+    }
+    else 
+    {
+        entry.value = "";
+        let output = document.createElement("p");
+        output.innerHTML = "Instructions: Please enter a number to turn into stars.";
+        outputBox.appendChild(output);
+    }
+}
 
   
