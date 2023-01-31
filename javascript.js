@@ -16,6 +16,7 @@ window.onload = function () {
           allExerciseDivs[i].classList.add("hide");
         }
 
+
         let targetDivId = button.getAttribute("data-target");
         let displayDiv = document.getElementById(targetDivId);
         displayDiv.classList.remove("hide");
@@ -96,6 +97,7 @@ function minMaxRange() {
       newNumber = firstValue + i;
       finalPrintout += ", " + newNumber.toString();
     }
+  }
 
     let output = document.createElement("p");
     output.innerHTML = "Result: " + finalPrintout;
@@ -137,3 +139,41 @@ function comSepValues() {
     outputBox.appendChild(output);
   }
 }
+
+    function numberOfMatchingKeys()
+  {
+      let outputBox = document.querySelector('#outputBoxThree');
+  
+      outputBox.innerHTML = "<h4>Output box</h4>";
+  
+      let firstEntry = document.querySelector('#inputBoxThree #userEntry:first-of-type');
+      let firstValues = firstEntry.value;
+      let commaSeperate = firstValues.split(",");
+
+      let secondEntry = document.querySelector('#inputBoxThree #userEntry:nth-of-type(2)');
+      let keyValue = secondEntry.value.toString();
+
+      if (firstValues !== "" && keyValue !== "")
+      {
+        let count = 0;
+
+        for(let i=0; i<commaSeperate.length; i++)
+        {
+            if (commaSeperate[i] === keyValue)
+            {
+                count++;
+            }
+        }
+        let output = document.createElement("p");
+        output.innerHTML = "Result: " + count;
+        outputBox.appendChild(output);
+        firstEntry.value = "";
+        secondEntry.value = "";
+    }
+    else 
+    {
+        let output = document.createElement("p");
+        output.innerHTML = "Instructions: Please enter comma seperated numbers, then a key number to query for the count.";
+        outputBox.appendChild(output);
+    }
+  }
