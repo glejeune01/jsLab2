@@ -42,6 +42,7 @@ window.onload = function () {
 					break;
 				case 'exerciseFive':
 					console.log('do a 5 dance');
+                    starPrinter();
 					break;
 				case 'exerciseSix':
 					console.log('do a 6 dance');
