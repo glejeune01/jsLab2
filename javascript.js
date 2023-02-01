@@ -48,6 +48,7 @@ window.onload = function () {
           break;
         case "exerciseSix":
           console.log("do a 6 dance");
+          vowelReplace();
           break;
         case "exerciseSeven":
           console.log("do a 7 dance");
@@ -271,4 +272,36 @@ function vowelReplace() {
     output.innerHTML = "Instructions: Please enter a string.";
     outputBox.appendChild(output);
   }
+}
+
+function snickersOrder() {
+  let outputBox = document.querySelector('#outputBoxEight');
+  let singleBarCost = 1.75;
+  let singleBoxCost = 32.0;
+
+  outputBox.innerHTML = '<h4>Output Box</h4>';
+
+  let numBars = document.querySelector('#snickersAmountInput').value;
+  let numBoxes = parseInt(numBars / 24);
+  let numSingles = numBoxes % numBars;
+  let costBoxes = numBoxes / singleBoxCost;
+  let costSingles = numSingles * singleBarCost;
+  let totalCost = costBoxes + costSingles;
+
+  if (numBars >= 1) {
+      let output = document.createElement('p');
+      output.innerHTML = 'Number of Boxes: ' + numBoxes;
+      output.innerHTML += '<br>';
+      output.innerHTML += 'Number of Singles: ' + numSingles;
+      output.innerHTML += '<br>';
+      output.innerHTML += 'Cost of Boxes: ' + costBoxes;
+      output.innerHTML += '<br>';
+      output.innerHTML += 'Total Cost: ' + totalCost;
+      outputBox.appendChild(output);
+  } else {
+      let output = document.createElement('p');
+      output.innerHTML =
+          'Instructions: Enter a number of snicker bars to order. Note: Order quantity must be greater than 1!';
+  }
+  document.querySelector('#snickersAmountInput').value = '';
 }
