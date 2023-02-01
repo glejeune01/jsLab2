@@ -32,6 +32,7 @@ window.onload = function () {
 					break;
 				case 'exerciseTwo':
 					console.log('do a 2 dance');
+					comSepValues();
 					break;
 				case 'exerciseThree':
 					console.log('do a 3 dance');
@@ -47,6 +48,7 @@ window.onload = function () {
 					break;
 				case 'exerciseSix':
 					console.log('do a 6 dance');
+					vowelReplace();
 					break;
 				case 'exerciseSeven':
 					console.log('do a 7 dance');
@@ -234,35 +236,39 @@ function starPrinter() {
 	document.querySelector('#inputBoxFive #numInput').value = '';
 	document.querySelector('#inputBoxFive #maxInput').value = '';
 }
+function vowelReplace() {
+	let outputBox = document.querySelector('#outputBoxSix');
+	outputBox.innerHTML = '<h4>Output box</h4>';
 
-function snickersOrder() {
-	let outputBox = document.querySelector('#outputBoxEight');
-	let singleBarCost = 1.75;
-	let singleBoxCost = 32.0;
+	let entry = document.querySelector('#inputBoxSix #userEntry:first-of-type');
+	let value = entry.value;
 
-	outputBox.innerHTML = '<h4>Output Box</h4>';
+	if (value !== '') {
+		let vowels = 'aeiouAEIOU';
+		let newStringOutput = '';
+		let vowelCount = 0;
 
-	let numBars = document.querySelector('#snickersAmountInput').value;
-	let numBoxes = parseInt(numBars / 24);
-	let numSingles = numBoxes % numBars;
-	let costBoxes = numBoxes / singleBoxCost;
-	let costSingles = numSingles * singleBarCost;
-	let totalCost = costBoxes + costSingles;
+		for (let i = 0; i < value.length; i++) {
+			if (vowels.indexOf(value[i]) !== -1) {
+				newStringOutput += '*';
+				vowelCount++;
+			} else {
+				newStringOutput += value[i];
+			}
+		}
 
-	if (numBars >= 1) {
-		let output = document.createElement('p');
-		output.innerHTML = 'Number of Boxes: ' + numBoxes;
-		output.innerHTML += '<br>';
-		output.innerHTML += 'Number of Singles: ' + numSingles;
-		output.innerHTML += '<br>';
-		output.innerHTML += 'Cost of Boxes: ' + costBoxes;
-		output.innerHTML += '<br>';
-		output.innerHTML += 'Total Cost: ' + totalCost;
-		outputBox.appendChild(output);
+		let countDisplay = document.createElement('p');
+		countDisplay.innerHTML = 'Number of Vowels:' + vowelCount;
+		outputBox.appendChild(countDisplay);
+
+		let resultDisplay = document.createElement('p');
+		resultDisplay.innerHTML = 'Result:' + newStringOutput;
+		outputBox.appendChild(resultDisplay);
+
+		entry.value = '';
 	} else {
 		let output = document.createElement('p');
-		output.innerHTML =
-			'Instructions: Enter a number of snicker bars to order. Note: Order quantity must be greater than 1!';
+		output.innerHTML = 'Instructions: Please enter a string.';
+		outputBox.appendChild(output);
 	}
-	document.querySelector('#snickersAmountInput').value = '';
 }
