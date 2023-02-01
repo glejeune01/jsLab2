@@ -339,17 +339,47 @@ function histogramGenerator() {
 }
 
 
-function binaryToBaseTen()
-{
-  let outputBox = document.querySelector("#outputBoxSix");
+function binaryToBaseTen() {
+  let outputBox = document.querySelector("#outputBoxNine");
   outputBox.innerHTML = "<h4>Output box</h4>";
 
-  let entry = document.querySelector("#inputBoxSix #userEntry:first-of-type");
+  let entry = document.querySelector("#inputBoxNine #userEntry:first-of-type");
   let value = entry.value;
-  let 
+  let number = 0;
+  let exponant = 0;
+  let responseOne = "";
+  let responseTwo = "";
 
-  if (value !== "") 
+  if (value !== "") {
+    for (let i = value.length - 1; i >= 0; i--) {
+      let digit = value.charAt(i);
+      if (digit !== '0' && digit !== '1') {
+        output = document.createElement('p');
+        output.innerHTML = "Please enter a valid binary number.";
+        outputBox.appendChild(output);
+        entry.value = "";
+        return;
+      }
+      if (digit === '1') {
+        number += Math.pow(2, exponant);
+        responseOne = "2^" + exponant + "+" + responseOne;
+        responseTwo = Math.pow(2, exponant) + "+" + responseTwo;
+      }
+      exponant++;
+      
+    }
+    responseOne = responseOne.substring(0, responseOne.length-1);
+    responseTwo = responseTwo.substring(0, responseTwo.length-1);
+
+    output = document.createElement('p');
+    output.innerHTML = value + " = " + responseOne + " = " + responseTwo + " = " + number;
+    outputBox.appendChild(output);
+    entry.value = "";
+  }
+  else 
   {
-
+    let output = document.createElement('p');
+    output.innerHTML = "Instructions: Please enter a valid binary number."
+    outputBox.appendChild(output);
   }
 }
