@@ -65,6 +65,7 @@ window.onload = function () {
           break;
         case "exerciseEleven":
           console.log("do a 11 dance");
+          binaryToBaseTen();
           break;
         case "exerciseTwelve":
           console.log("do a 12 dance");
@@ -304,4 +305,19 @@ function snickersOrder() {
           'Instructions: Enter a number of snicker bars to order. Note: Order quantity must be greater than 1!';
   }
   document.querySelector('#snickersAmountInput').value = '';
+}
+
+function binaryToBaseTen()
+{
+  let outputBox = document.querySelector("#outputBoxSix");
+  outputBox.innerHTML = "<h4>Output box</h4>";
+
+  let entry = document.querySelector("#inputBoxSix #userEntry:first-of-type");
+  let value = entry.value;
+  let 
+
+  if (value !== "") 
+  {
+
+  }
 }
