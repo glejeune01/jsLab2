@@ -65,6 +65,7 @@ window.onload = function () {
 					break;
 				case 'exerciseEleven':
 					console.log('do a 11 dance');
+					histogramGenerator();
 					break;
 				case 'exerciseTwelve':
 					console.log('do a 12 dance');
@@ -307,31 +308,31 @@ function snickersOrder() {
 
 function histogramGenerator() {
 	let outputBox = document.querySelector('#outputBoxEleven');
-	outputBox.innerHTML = '<h4>Output Box<h4>';
+	outputBox.innerHTML = '<h4>Output Box</h4>';
 
 	let userSentence = document.querySelector('#histogramInput').value;
 	let words = userSentence.split(' ');
-	let histogram = [];
+	let histogram = {};
 
-	if (userSentence.innerHTML.textContent != null)
+	if (userSentence) {
 		for (let i = 0; i < words.length; i++) {
 			let word = words[i];
-			let wordIndex = -1;
-
-			for (let j = 0; j < histogram.length; j++) {
-				if (histogram[j][0] === word) {
-					wordIndex = j;
-					break;
-				}
-			}
-
-			if (wordIndex === -1) {
-				histogram.push([word, 1]);
+			let length = word.length;
+			if (histogram[length]) {
+				histogram[length]++;
 			} else {
-				histogram[wordIndex][1]++;
+				histogram[length] = 1;
 			}
 		}
-	return histogram;
-	let output = document.createElement('p');
-	output.innerHTML = histogram;
+		let output = '';
+		for (let length in histogram) {
+			output += `<p>${'*'.repeat(histogram[length])} (${length})</p>`;
+		}
+		outputBox.innerHTML += output;
+	} else {
+		let output = document.createElement('p');
+		output.innerHTML =
+			'Instructions: Enter a sentence. Once you are done, press the submit button to see a histogram of the word lengths in your sentence!';
+		outputBox.appendChild(output);
+	}
 }
