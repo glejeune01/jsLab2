@@ -1,79 +1,83 @@
 window.onload = function () {
 
-	let selectedButton;
-	let buttons = document.querySelectorAll('button');
-	let exerciseContainer =
-		document.getElementsByClassName('exerciseContainer')[0];
-	let allExerciseDivs = exerciseContainer.getElementsByClassName('exerciseBox');
 
-	for (let i = 0; i < allExerciseDivs.length; i++) {
-		allExerciseDivs[i].classList.add('hide');
-	}
+  let exerciseContainer =
+  document.getElementsByClassName("exerciseContainer")[0];
 
-	buttons.forEach(function (button) {
-		if (button.id !== 'process') {
-			button.addEventListener('click', function () {
-				for (let i = 0; i < allExerciseDivs.length; i++) {
-					allExerciseDivs[i].classList.add('hide');
-				}
+  let allExerciseDivs = exerciseContainer.getElementsByClassName("exerciseBox");
 
-				let targetDivId = button.getAttribute('data-target');
-				let displayDiv = document.getElementById(targetDivId);
-				displayDiv.classList.remove('hide');
+  for (let i = 0; i < allExerciseDivs.length; i++) {
+    allExerciseDivs[i].classList.add("hide");
+  }
 
-				selectedButton = targetDivId;
-			});
-		}
+  buttons.forEach(function (button) {
+    if (button.id !== "process") {
+      button.addEventListener("click", function () {
+        for (let i = 0; i < allExerciseDivs.length; i++) {
+          allExerciseDivs[i].classList.add("hide");
+        }
 
-		button.addEventListener('click', function () {
-			switch (selectedButton) {
-				case 'exerciseOne':
-					console.log('do a 1 dance');
-					minMaxRange();
-					break;
-				case 'exerciseTwo':
-					console.log('do a 2 dance');
-					break;
-				case 'exerciseThree':
-					console.log('do a 3 dance');
-					numberOfMatchingKeys();
-					break;
-				case 'exerciseFour':
-					console.log('do a 4 dance');
-					break;
+
+        let targetDivId = button.getAttribute("data-target");
+        let displayDiv = document.getElementById(targetDivId);
+        displayDiv.classList.remove("hide");
+
+        selectedButton = targetDivId;
+      });
+    }
+
+    button.addEventListener("click", function () {
+      switch (selectedButton) {
+        case "exerciseOne":
+          console.log("do a 1 dance");
+          minMaxRange();
+          break;
+        case "exerciseTwo":
+          console.log("do a 2 dance");
+          comSepValues();
+          break;
+        case "exerciseThree":
+          console.log("do a 3 dance");
+          numberOfMatchingKeys();
+          break;
+        case "exerciseFour":
+          console.log("do a 4 dance");
+          numStars();
+          break;
 				case 'exerciseFive':
 					console.log('do a 5 dance');
-                    starPrinter();
-					break;
-				case 'exerciseSix':
-					console.log('do a 6 dance');
-					break;
-				case 'exerciseSeven':
-					console.log('do a 7 dance');
-					break;
-				case 'exerciseEight':
-					console.log('do a 8 dance');
-					break;
-				case 'exerciseNine':
-					console.log('do a 9 dance');
-					break;
-				case 'exerciseTen':
-					console.log('do a 10 dance');
-					break;
-				case 'exerciseEleven':
-					console.log('do a 11 dance');
-					break;
-				case 'exerciseTwelve':
-					console.log('do a 12 dance');
-					break;
-				case 'exerciseThirteen':
-					console.log('do a 13 dance');
-					break;
-				default:
-					return;
-			}
-		});
-	});
+          starPrinter();
+          break;
+        case "exerciseSix":
+          console.log("do a 6 dance");
+          vowelReplace();
+          break;
+        case "exerciseSeven":
+          console.log("do a 7 dance");
+          break;
+        case "exerciseEight":
+          console.log("do a 8 dance");
+          break;
+        case "exerciseNine":
+          console.log("do a 9 dance");
+          break;
+        case "exerciseTen":
+          console.log("do a 10 dance");
+          break;
+        case "exerciseEleven":
+          console.log("do a 11 dance");
+          break;
+        case "exerciseTwelve":
+          console.log("do a 12 dance");
+          break;
+        case "exerciseThirteen":
+          console.log("do a 13 dance");
+          break;
+        default:
+          return;
+      }
+    });
+  });
 };
 
 function minMaxRange() {
@@ -188,33 +192,78 @@ function comSepValues() {
   }
 }
 
-  function numStars()
+function numStars()
+
 {
-    let outputBox = document.querySelector('#outputBoxFour');
-    outputBox.innerHTML = "<h4>Output box</h4>";
-    
-    let entry = document.querySelector('#inputBoxFour #userEntry:first-of-type');
-    let value = entry.value;
+  let outputBox = document.querySelector('#outputBoxFour');
+  outputBox.innerHTML = "<h4>Output box</h4>";
 
-    if(value !== "")
+  let entry = document.querySelector('#inputBoxFour #userEntry:first-of-type');
+  let value = entry.value;
+
+  if(value !== "")
+  {
+      let starString = "";
+
+      for(i=0; i<value; i++)
+      {
+          starString+= "*"
+      }
+
+      let output = document.createElement("p");
+      output.innerHTML = "Result: " +starString;
+      outputBox.appendChild(output);
+      entry.value = "";
+  }
+  else 
+  {
+      entry.value = "";
+      let output = document.createElement("p");
+      output.innerHTML = "Instructions: Please enter a number to turn into stars.";
+      outputBox.appendChild(output);
+  }
+}
+
+function vowelReplace() {
+  let outputBox = document.querySelector('#outputBoxSix');
+  outputBox.innerHTML = "<h4>Output box</h4>";
+
+  let entry = document.querySelector('#inputBoxSix #userEntry:first-of-type');
+  let value = entry.value;
+
+  if (value !== "") 
+  {
+    let vowels = "aeiouAEIOU"
+    let newStringOutput = "";
+    let vowelCount = 0;
+
+    for (let i=0; i< value.length; i++)
     {
-        let starString = "";
-
-        for(i=0; i<value; i++)
-        {
-            starString+= "*"
-        }
-
-        let output = document.createElement("p");
-        output.innerHTML = "Result: " +starString;
-        outputBox.appendChild(output);
-        entry.value = "";
+      if (vowels.indexOf(value[i]) !== -1)
+      {
+        newStringOutput += "*";
+        vowelCount++
+      }
+      else
+      {
+        newStringOutput += value[i];
+      }
     }
-    else 
-    {
-        entry.value = "";
-        let output = document.createElement("p");
-        output.innerHTML = "Instructions: Please enter a number to turn into stars.";
-        outputBox.appendChild(output);
-    }
+
+    let countDisplay = document.createElement('p');
+    countDisplay.innerHTML = "Number of Vowels:" + vowelCount;
+    outputBox.appendChild(countDisplay);
+
+    let resultDisplay = document.createElement('p');
+    resultDisplay.innerHTML = "Result:" + newStringOutput;
+    outputBox.appendChild(resultDisplay);
+
+    entry.value = "";
+  } 
+  else 
+  {
+    let output = document.createElement("p");
+    output.innerHTML = "Instructions: Please enter a string.";
+    outputBox.appendChild(output);
+  }
 }
