@@ -89,7 +89,7 @@ h4 {
   text-align: center;
 }
 
-#inputBox,#inputBox2,#inputBoxThree,#inputBoxFour {
+#inputBox,#inputBox2,#inputBoxThree,#inputBoxFour,#inputBoxSix {
   display: grid;
   row-gap: 1rem;
   width: 80%;
@@ -103,7 +103,7 @@ h4 {
     rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
-#outputBox,#outputBox2,#outputBoxThree,#outputBoxFour {
+#outputBox,#outputBox2,#outputBoxThree,#outputBoxFour,#outputBoxSix {
   width: 80%;
   height: 10rem;
   background-color: whitesmoke;

@@ -51,6 +51,7 @@ window.onload = function () {
           break;
         case "exerciseSix":
           console.log("do a 6 dance");
+          vowelReplace();
           break;
         case "exerciseSeven":
           console.log("do a 7 dance");
@@ -187,34 +188,79 @@ function comSepValues() {
     }
   }
 
-  function numStars()
+function numStars()
 {
-    let outputBox = document.querySelector('#outputBoxFour');
-    outputBox.innerHTML = "<h4>Output box</h4>";
-    
-    let entry = document.querySelector('#inputBoxFour #userEntry:first-of-type');
-    let value = entry.value;
+  let outputBox = document.querySelector('#outputBoxFour');
+  outputBox.innerHTML = "<h4>Output box</h4>";
 
-    if(value !== "")
-    {
-        let starString = "";
+  let entry = document.querySelector('#inputBoxFour #userEntry:first-of-type');
+  let value = entry.value;
 
-        for(i=0; i<value; i++)
-        {
-            starString+= "*"
-        }
+  if(value !== "")
+  {
+      let starString = "";
 
-        let output = document.createElement("p");
-        output.innerHTML = "Result: " +starString;
-        outputBox.appendChild(output);
-        entry.value = "";
-    }
-    else 
-    {
-        entry.value = "";
-        let output = document.createElement("p");
-        output.innerHTML = "Instructions: Please enter a number to turn into stars.";
-        outputBox.appendChild(output);
-    }
+      for(i=0; i<value; i++)
+      {
+          starString+= "*"
+      }
+
+      let output = document.createElement("p");
+      output.innerHTML = "Result: " +starString;
+      outputBox.appendChild(output);
+      entry.value = "";
+  }
+  else 
+  {
+      entry.value = "";
+      let output = document.createElement("p");
+      output.innerHTML = "Instructions: Please enter a number to turn into stars.";
+      outputBox.appendChild(output);
+  }
 }
+
+function vowelReplace() {
+  let outputBox = document.querySelector('#outputBoxSix');
+  outputBox.innerHTML = "<h4>Output box</h4>";
+
+  let entry = document.querySelector('#inputBoxSix #userEntry:first-of-type');
+  let value = entry.value;
+
+  if (value !== "") 
+  {
+    let vowels = "aeiouAEIOU"
+    let newStringOutput = "";
+    let vowelCount = 0;
+
+    for (let i=0; i< value.length; i++)
+    {
+      if (vowels.indexOf(value[i]) !== -1)
+      {
+        newStringOutput += "*";
+        vowelCount++
+      }
+      else
+      {
+        newStringOutput += value[i];
+      }
+    }
+
+    let countDisplay = document.createElement('p');
+    countDisplay.innerHTML = "Number of Vowels:" + vowelCount;
+    outputBox.appendChild(countDisplay);
+
+    let resultDisplay = document.createElement('p');
+    resultDisplay.innerHTML = "Result:" + newStringOutput;
+    outputBox.appendChild(resultDisplay);
+
+    entry.value = "";
+  } 
+  else 
+  {
+    let output = document.createElement("p");
+    output.innerHTML = "Instructions: Please enter a string.";
+    outputBox.appendChild(output);
+  }
+}
+
 
