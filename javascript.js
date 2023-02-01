@@ -170,4 +170,112 @@ function starPrinter() {
 	}
 }
 
-function snickersOrder() {}
+function comSepValues() {
+	let outputBox = document.querySelector('#outputBox2');
+	outputBox.innerHTML = '<h4>Output box</h4>';
+
+	let input = document.querySelector('#userEntry').value;
+
+	if (input !== '') {
+		let values = input.split(',').map(Number);
+		let count = values.length;
+		let total = values.reduce((a, b) => a + b, 0);
+		let average = total / count;
+		let smallest = Math.min(...values);
+		let largest = Math.max(...values);
+
+		document.querySelector('#numOfValues').textContent =
+			'Number of values: ' + count;
+		document.querySelector('#total').textContent = 'Total: ' + total;
+		document.querySelector('#average').textContent = 'Average: ' + average;
+		document.querySelector('#smallest').textContent = 'Smallest: ' + smallest;
+		document.querySelector('#largest').textContent = 'Largest: ' + largest;
+	} else {
+		let output = document.createElement('a');
+		output.innerHTML =
+			'Instructions: Ask the user for a comma-separated set of numeric values. Display the number of values entered, the total, the average, the smallest value, and the largest value.';
+		outputBox.appendChild(output);
+	}
+}
+
+function numStars() {
+	let outputBox = document.querySelector('#outputBoxFour');
+	outputBox.innerHTML = '<h4>Output box</h4>';
+
+	let entry = document.querySelector('#inputBoxFour #userEntry:first-of-type');
+	let value = entry.value;
+
+	if (value !== '') {
+		let starString = '';
+
+		for (i = 0; i < value; i++) {
+			starString += '*';
+		}
+
+		let output = document.createElement('p');
+		output.innerHTML = 'Result: ' + starString;
+		outputBox.appendChild(output);
+		entry.value = '';
+	} else {
+		entry.value = '';
+		let output = document.createElement('p');
+		output.innerHTML =
+			'Instructions: Please enter a number to turn into stars.';
+		outputBox.appendChild(output);
+	}
+}
+
+function comSepValues() {
+	let outputBox = document.querySelector('#outputBox2');
+	outputBox.innerHTML = '<h4>Output box</h4>';
+
+	let input = document.querySelector('#userEntry').value;
+
+	if (input !== '') {
+		let values = input.split(',').map(Number);
+		let count = values.length;
+		let total = values.reduce((a, b) => a + b, 0);
+		let average = total / count;
+		let smallest = Math.min(...values);
+		let largest = Math.max(...values);
+
+		document.querySelector('#numOfValues').textContent =
+			'Number of values: ' + count;
+		document.querySelector('#total').textContent = 'Total: ' + total;
+		document.querySelector('#average').textContent = 'Average: ' + average;
+		document.querySelector('#smallest').textContent = 'Smallest: ' + smallest;
+		document.querySelector('#largest').textContent = 'Largest: ' + largest;
+	} else {
+		let output = document.createElement('a');
+		output.innerHTML =
+			'Instructions: Ask the user for a comma-separated set of numeric values. Display the number of values entered, the total, the average, the smallest value, and the largest value.';
+		outputBox.appendChild(output);
+	}
+}
+
+function numStars() {
+	let outputBox = document.querySelector('#outputBoxFour');
+	outputBox.innerHTML = '<h4>Output box</h4>';
+
+	let entry = document.querySelector('#inputBoxFour #userEntry:first-of-type');
+	let value = entry.value;
+
+	if (value !== '') {
+		let starString = '';
+
+		for (i = 0; i < value; i++) {
+			starString += '*';
+		}
+
+		let output = document.createElement('p');
+		output.innerHTML = 'Result: ' + starString;
+		outputBox.appendChild(output);
+		entry.value = '';
+	} else {
+		entry.value = '';
+		let output = document.createElement('p');
+		output.innerHTML =
+			'Instructions: Please enter a number to turn into stars.';
+		outputBox.appendChild(output);
+	}
+}
