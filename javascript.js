@@ -70,6 +70,7 @@ window.onload = function () {
 					break;
 				case 'exerciseTwelve':
 					console.log('do a 12 dance');
+          minCharacterString();
 					break;
 				case 'exerciseThirteen':
 					console.log('do a 13 dance');
@@ -89,9 +90,7 @@ function minMaxRange() {
 	let firstEntry = document.querySelector('#inputBox #userEntry:first-of-type');
 	let firstValue = parseInt(firstEntry.value);
 
-	let secondEntry = document.querySelector(
-		'#inputBox #userEntry:nth-of-type(2)'
-	);
+	let secondEntry = document.querySelector('#inputBox #userEntry:nth-of-type(2)');
 	let secondValue = parseInt(secondEntry.value);
 
 	if (firstEntry.value !== '' && secondEntry.value !== '') {
@@ -380,6 +379,35 @@ function binaryToBaseTen() {
   {
     let output = document.createElement('p');
     output.innerHTML = "Instructions: Please enter a valid binary number."
+    outputBox.appendChild(output);
+  }
+}
+
+function minCharacterString()
+{
+  let outputBox = document.querySelector("#outputBoxTwelve");
+  outputBox.innerHTML = "<h4>Output box</h4>";
+
+  let entryNum = document.querySelector("#inputBoxTwelve #userEntry:first-of-type");
+  let valueNum = entryNum.value;
+  let entryString = document.querySelector("#inputBoxTwelve #userEntry:nth-of-type(2)");
+  let valueString = entryString.value;
+  let seperatedString = valueString.split(" ");
+  let resultString= "";
+
+  if (valueNum > 0 && valueString !== "") {
+    for(i=0; i<seperatedString.length; i++){
+      if (seperatedString[i].length >= valueNum){
+        resultString+=seperatedString[i] + " "; 
+      }
+    }
+    let output = document.createElement('p');
+    output.innerHTML = "Result: " + resultString;
+    outputBox.appendChild(output);
+  }
+  else {
+    output = document.createElement('p');
+    output.innerHTML = "Instructions: Please enter a number greater then 0, and a string."
     outputBox.appendChild(output);
   }
 }
