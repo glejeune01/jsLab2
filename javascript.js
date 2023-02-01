@@ -195,7 +195,9 @@ function numStars() {
 		output.innerHTML = 'Result: ' + starString;
 		outputBox.appendChild(output);
 		entry.value = '';
-	} else {
+	} 
+	else 
+	{
 		entry.value = '';
 		let output = document.createElement('p');
 		output.innerHTML =
@@ -209,19 +211,30 @@ function starPrinter() {
 
 	outputBox.innerHTML = '<h4>Output Box</h4>';
 
-	let numStars = document.querySelector('#numInput').value;
-	let maxStars = document.querySelector('#maxInput').value;
+	let numStars = document.querySelector('#inputBoxFive #numInput').value;
+	let maxStars = document.querySelector('#inputBoxFive #maxInput').value;
 
-	if (numStars < 1 || maxStars < 1) {
-		alert('numStars value must be greater than 1!');
-	} else if (numStars >= 1 && maxStars >= 1) {
+	if (numStars >= 1 && maxStars >= 1) 
+	{
 		let output = '';
-		for (let i = 1; i <= numStars; i++) {
+		for (let i = 1; i <= numStars; i++) 
+		{
 			output += '*';
-			if (i % maxStars === 0) {
+
+			if (i % maxStars === 0) 
+			{
 				output += '<br>';
 			}
 		}
 		document.querySelector('#outputBoxFive').innerHTML += output;
+		maxStars.value = '';
+		numStars.value = '';
+	}
+	else 
+	{
+		let output = document.createElement('p');
+		output.innerHTML =
+			'Instructions: Please input a total number of stars, and a max number of stars per line';
+		outputBox.appendChild(output);
 	}
 }
