@@ -59,13 +59,13 @@ window.onload = function () {
           break;
         case "exerciseNine":
           console.log("do a 9 dance");
+          binaryToBaseTen();
           break;
         case "exerciseTen":
           console.log("do a 10 dance");
           break;
         case "exerciseEleven":
           console.log("do a 11 dance");
-          binaryToBaseTen();
           break;
         case "exerciseTwelve":
           console.log("do a 12 dance");
