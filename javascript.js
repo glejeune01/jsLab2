@@ -153,6 +153,21 @@ function starPrinter() {
 
 	outputBox.innerHTML = '<h4>Output Box</h4>';
 
-	let numStars = document.querySelector('#numInput');
-	let maxStars = document.querySelector('maxInput');
+	let numStars = document.querySelector('#numInput').value;
+	let maxStars = document.querySelector('#maxInput').value;
+
+	if (numStars < 1 || maxStars < 1) {
+		alert('numStars value must be greater than 1!');
+	} else if (numStars >= 1 && maxStars >= 1) {
+		let output = '';
+		for (let i = 1; i <= numStars; i++) {
+			output += '*';
+			if (i % maxStars === 0) {
+				output += '<br>';
+			}
+		}
+		document.querySelector('#outputBoxFive').innerHTML += output;
+	}
 }
+
+function snickersOrder() {}
