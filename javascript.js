@@ -53,6 +53,7 @@ window.onload = function () {
 					break;
 				case 'exerciseEight':
 					console.log('do a 8 dance');
+					snickersOrder();
 					break;
 				case 'exerciseNine':
 					console.log('do a 9 dance');
@@ -195,9 +196,7 @@ function numStars() {
 		output.innerHTML = 'Result: ' + starString;
 		outputBox.appendChild(output);
 		entry.value = '';
-	} 
-	else 
-	{
+	} else {
 		entry.value = '';
 		let output = document.createElement('p');
 		output.innerHTML =
@@ -214,27 +213,56 @@ function starPrinter() {
 	let numStars = document.querySelector('#inputBoxFive #numInput').value;
 	let maxStars = document.querySelector('#inputBoxFive #maxInput').value;
 
-	if (numStars >= 1 && maxStars >= 1) 
-	{
+	if (numStars >= 1 && maxStars >= 1) {
 		let output = '';
-		for (let i = 1; i <= numStars; i++) 
-		{
+		for (let i = 1; i <= numStars; i++) {
 			output += '*';
 
-			if (i % maxStars === 0) 
-			{
+			if (i % maxStars === 0) {
 				output += '<br>';
 			}
 		}
 		document.querySelector('#outputBoxFive').innerHTML += output;
 		maxStars.value = '';
 		numStars.value = '';
-	}
-	else 
-	{
+	} else {
 		let output = document.createElement('p');
 		output.innerHTML =
 			'Instructions: Please input a total number of stars, and a max number of stars per line';
 		outputBox.appendChild(output);
 	}
+	document.querySelector('#inputBoxFive #numInput').value = '';
+	document.querySelector('#inputBoxFive #maxInput').value = '';
+}
+
+function snickersOrder() {
+	let outputBox = document.querySelector('#outputBoxEight');
+	let singleBarCost = 1.75;
+	let singleBoxCost = 32.0;
+
+	outputBox.innerHTML = '<h4>Output Box</h4>';
+
+	let numBars = document.querySelector('#snickersAmountInput').value;
+	let numBoxes = parseInt(numBars / 24);
+	let numSingles = numBoxes % numBars;
+	let costBoxes = numBoxes / singleBoxCost;
+	let costSingles = numSingles * singleBarCost;
+	let totalCost = costBoxes + costSingles;
+
+	if (numBars >= 1) {
+		let output = document.createElement('p');
+		output.innerHTML = 'Number of Boxes: ' + numBoxes;
+		output.innerHTML += '<br>';
+		output.innerHTML += 'Number of Singles: ' + numSingles;
+		output.innerHTML += '<br>';
+		output.innerHTML += 'Cost of Boxes: ' + costBoxes;
+		output.innerHTML += '<br>';
+		output.innerHTML += 'Total Cost: ' + totalCost;
+		outputBox.appendChild(output);
+	} else {
+		let output = document.createElement('p');
+		output.innerHTML =
+			'Instructions: Enter a number of snicker bars to order. Note: Order quantity must be greater than 1!';
+	}
+	document.querySelector('#snickersAmountInput').value = '';
 }
