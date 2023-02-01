@@ -78,7 +78,9 @@ window.onload = function () {
 		});
 	});
 };
-
+function doNothing(){
+  console.log("do nothing");
+}
 function minMaxRange() {
 	let outputBox = document.querySelector('#outputBox');
 
