@@ -74,6 +74,7 @@ window.onload = function () {
 					break;
 				case 'exerciseThirteen':
 					console.log('do a 13 dance');
+          compareArrays();
 					break;
 				default:
 					return;
@@ -408,6 +409,32 @@ function minCharacterString()
   else {
     output = document.createElement('p');
     output.innerHTML = "Instructions: Please enter a number greater then 0, and a string."
+    outputBox.appendChild(output);
+  }
+}
+
+function compareArrays(){
+  let outputBox = document.querySelector("#outputBoxThirteen");
+  outputBox.innerHTML = "<h4>Output box</h4>";
+
+  let firstArray = document.querySelector("#inputBoxThirteen #userEntry:first-of-type");
+  let firstSplitArray = firstArray.value.split(",");
+  let secondArray = document.querySelector("#inputBoxThirteen #userEntry:nth-of-type(2)");
+  let secondSplitArray = secondArray.value.split(",");
+  let result = 0;
+
+  if(firstArray.value !== "" && secondArray.value !== "" && firstSplitArray.length === secondSplitArray.length){
+    for(i=0; i<firstSplitArray.length; i++){
+      result+= parseInt(firstSplitArray[i]) + parseInt(secondSplitArray[i]) + ", ";
+    }
+    result = result.slice(1, -2);
+    let output = document.createElement('p');
+    output.innerHTML = "Results: " + result;
+    outputBox.appendChild(output);
+  }
+  else{
+    output = document.createElement('p');
+    output.innerHTML = "Instructions: Please enter two arrays of numbers seperated by commas. Ensure both arrays are the same length."
     outputBox.appendChild(output);
   }
 }

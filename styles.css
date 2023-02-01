@@ -98,7 +98,8 @@ h4 {
 #inputBoxEight,
 #inputBoxNine,
 #inputBoxEleven,
-#inputBoxTwelve {
+#inputBoxTwelve,
+#inputBoxThirteen {
   display: grid;
   row-gap: 1rem;
   width: 80%;
@@ -121,7 +122,8 @@ h4 {
 #outputBoxEight,
 #outputBoxNine,
 #outputBoxEleven,
-#outputBoxTwelve   {
+#outputBoxTwelve,
+#outputBoxThirteen   {
   width: 80%;
   height: 10rem;
   background-color: whitesmoke;
