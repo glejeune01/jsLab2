@@ -52,6 +52,7 @@ window.onload = function () {
 					break;
 				case 'exerciseSeven':
 					console.log('do a 7 dance');
+					courierCompany();
 					break;
 				case 'exerciseEight':
 					console.log('do a 8 dance');
@@ -59,10 +60,11 @@ window.onload = function () {
 					break;
 				case 'exerciseNine':
 					console.log('do a 9 dance');
-          binaryToBaseTen();
+          			binaryToBaseTen();
 					break;
 				case 'exerciseTen':
 					console.log('do a 10 dance');
+					triangles()
 					break;
 				case 'exerciseEleven':
 					console.log('do a 11 dance');
@@ -70,11 +72,11 @@ window.onload = function () {
 					break;
 				case 'exerciseTwelve':
 					console.log('do a 12 dance');
-          minCharacterString();
+          			minCharacterString();
 					break;
 				case 'exerciseThirteen':
 					console.log('do a 13 dance');
-          compareArrays();
+          			compareArrays();
 					break;
 				default:
 					return;
@@ -118,32 +120,45 @@ function minMaxRange() {
 }
 
 function comSepValues() {
-	let outputBox = document.querySelector('#outputBox2');
-	outputBox.innerHTML = '<h4>Output box</h4>';
-
-	let input = document.querySelector('#userEntry').value;
-
-	if (input !== '') {
-		let values = input.split(',').map(Number);
-		let count = values.length;
-		let total = values.reduce((a, b) => a + b, 0);
-		let average = total / count;
-		let smallest = Math.min(...values);
-		let largest = Math.max(...values);
-
-		document.querySelector('#numOfValues').textContent =
-			'Number of values: ' + count;
-		document.querySelector('#total').textContent = 'Total: ' + total;
-		document.querySelector('#average').textContent = 'Average: ' + average;
-		document.querySelector('#smallest').textContent = 'Smallest: ' + smallest;
-		document.querySelector('#largest').textContent = 'Largest: ' + largest;
+	let outputBox = document.querySelector("#outputBoxTwo");
+	outputBox.innerHTML = "<h4>Output box</h4>";
+  
+	let entry = document.querySelector("#inputBoxTwo #userEntry");
+	let value = entry.value;
+  
+	if (value !== "") {
+	  let values = value.split(",").map(Number);
+	  let count = values.length;
+	  let total = values.reduce((a, b) => a + b, 0);
+	  let average = total / count;
+	  let smallest = Math.min(...values);
+	  let largest = Math.max(...values);
+  
+	  let output = document.createElement("p");
+	  outputBox.innerHTML =
+		"Number of values: " +
+		count +
+		"<br>" +
+		"Total: " +
+		total +
+		"<br>" +
+		"Average: " +
+		average +
+		"<br>" +
+		"Smallest: " +
+		smallest +
+		"<br>" +
+		"Largest: " +
+		largest;
+	  outputBox.appendChild(output);
 	} else {
-		let output = document.createElement('a');
-		output.innerHTML =
-			'Instructions: Ask the user for a comma-separated set of numeric values. Display the number of values entered, the total, the average, the smallest value, and the largest value.';
-		outputBox.appendChild(output);
+	  let output = document.createElement("p");
+	  output.innerHTML =
+		"Instructions: Ask the user for a comma-separated set of numeric values. Display the number of values entered, the total, the average, the smallest value, and the largest value.";
+	  outputBox.appendChild(output);
 	}
-}
+	entry.value = "";
+  }
 
 function numberOfMatchingKeys() {
 	let outputBox = document.querySelector('#outputBoxThree');
@@ -438,3 +453,109 @@ function compareArrays(){
     outputBox.appendChild(output);
   }
 }
+
+function triangles() {
+	let outputBox = document.querySelector("#outputBoxTen");
+	outputBox.innerHTML = "<h4>Output box</h4>";
+  
+	let firstEntry = document.querySelector(
+	  "#inputBoxTen #userEntry:first-of-type"
+	);
+	let firstAngle = firstEntry.value;
+  
+	let secondEntry = document.querySelector(
+	  "#inputBoxTen #userEntry:nth-of-type(2)"
+	);
+	let secondAngle = secondEntry.value;
+  
+	let thirdEntry = document.querySelector(
+	  "#inputBoxTen #userEntry:nth-of-type(3)"
+	);
+	let thirdAngle = thirdEntry.value;
+	let sum = firstAngle + secondAngle + thirdAngle;
+  
+	if (
+	  (firstAngle <= 0 && firstAngle >= 180) ||
+	  (secondAngle <= 0 && secondAngle >= 180) ||
+	  (thirdAngle <= 0 && thirdAngle >= 180)
+	) {
+	  alert(
+		`Angles must be greater than 0, less than 180, and the sum of angles must be 180`
+	  );
+	}
+	if (firstAngle !== "" && secondAngle !== "" && thirdAngle !== "") {
+	  if (firstAngle == 90 || secondAngle == 90 || thirdAngle == 90) {
+		outputBox.innerHTML = "Right Triangle";
+	  } else if (firstAngle > 90 || secondAngle > 90 || thirdAngle > 90) {
+		outputBox.innerHTML = "Obtuse Angle";
+	  } else if (firstAngle < 90 || secondAngle < 90 || thirdAngle < 90) {
+		outputBox.innerHTML = "Acute Angle";
+	  }
+	} else {
+	  firstEntry.value = "";
+	  secondEntry.value = "";
+	  thirdEntry.value = "";
+	  let output = document.createElement("p");
+	  output.innerHTML =
+		"Ask the user for the three angles of a triangle. Display the message `Right Triangle` if any of the angles is 90, `Obtuse Triangle` if any of the angles is greater than 90, or `Acute Triangle` if all of the angles are less than 90.";
+	  outputBox.appendChild(output);
+	}
+  }
+
+  function courierCompany() {
+	let outputBox = document.querySelector("#outputBoxSeven");
+	outputBox.innerHTML = "<h4>Output box</h4>";
+  
+	let entry = document.querySelector("#inputBoxSeven #userEntry");
+	let items = entry.value;
+  
+	if (items > 1) {
+	  if (items <= 100) {
+		let baseCost = items * 5;
+		let tax = baseCost * 0.15;
+		let totalCost = baseCost + tax;
+		outputBox.innerHTML =
+		  "Base cost: $" +
+		  baseCost.toFixed(2) +
+		  "<br>" +
+		  "Tax: $" +
+		  tax.toFixed(2) +
+		  "<br>" +
+		  "Total cost: $" +
+		  totalCost.toFixed(2);
+	  } else if (items > 100 && items <= 1000) {
+		let baseCost = items * 4;
+		let tax = baseCost * 0.15;
+		let totalCost = baseCost + tax;
+		outputBox.innerHTML =
+		  "Base cost: $" +
+		  baseCost.toFixed(2) +
+		  "<br>" +
+		  "Tax: $" +
+		  tax.toFixed(2) +
+		  "<br>" +
+		  "Total cost: $" +
+		  totalCost.toFixed(2);
+	  } else if (items >= 1000) {
+		let baseCost = items * 3;
+		let tax = baseCost * 0.15;
+		let totalCost = baseCost + tax;
+		outputBox.innerHTML =
+		  "Base cost: $" +
+		  baseCost.toFixed(2) +
+		  "<br>" +
+		  "Tax: $" +
+		  tax.toFixed(2) +
+		  "<br>" +
+		  "Total cost: $" +
+		  totalCost.toFixed(2);
+	  }
+	} else {
+	  entry.value = "";
+	  let output = document.createElement("p");
+	  output.innerHTML =
+		"Instructions: At a certain courier company, shipping costs (not including tax) are $5/item for fewer than 100 items, $4/item for between 100 and 1,000 items, and $3/item for more than 1,000 items. Ask the user how many items to ship. Display the base cost, a 15% tax, and the total cost.";
+	  outputBox.appendChild(output);
+	}
+	outputBox.appendChild(output);
+  }
