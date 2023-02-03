@@ -25,6 +25,7 @@ window.onload = function () {
 		}
 
 		button.addEventListener('click', function () {
+			if (button.id == "process") {
 			switch (selectedButton) {
 				case 'exerciseOne':
 					console.log('do a 1 dance');
@@ -64,7 +65,7 @@ window.onload = function () {
 					break;
 				case 'exerciseTen':
 					console.log('do a 10 dance');
-					triangles()
+					triangles();
 					break;
 				case 'exerciseEleven':
 					console.log('do a 11 dance');
@@ -81,6 +82,7 @@ window.onload = function () {
 				default:
 					return;
 			}
+		}
 		});
 	});
 };
@@ -101,7 +103,7 @@ function minMaxRange() {
 		let newNumber;
 		let finalPrintout = firstValue.toString();
 
-		for (let i = 1; i < diffValue; i++) {
+		for (let i = 1; i <= diffValue; i++) {
 			newNumber = firstValue + i;
 			finalPrintout += ', ' + newNumber.toString();
 		}
@@ -130,7 +132,7 @@ function comSepValues() {
 	  let values = value.split(",").map(Number);
 	  let count = values.length;
 	  let total = values.reduce((a, b) => a + b, 0);
-	  let average = total / count;
+	  let average = (total / count).toFixed(2);
 	  let smallest = Math.min(...values);
 	  let largest = Math.max(...values);
   
@@ -229,8 +231,8 @@ function starPrinter() {
 
 	outputBox.innerHTML = '<h4>Output Box</h4>';
 
-	let numStars = document.querySelector('#inputBoxFive #numInput').value;
-	let maxStars = document.querySelector('#inputBoxFive #maxInput').value;
+	let numStars = document.querySelector('#inputBoxFive #userEntry:first-of-type').value;
+	let maxStars = document.querySelector('#inputBoxFive #userEntry:nth-of-type(2)').value;
 
 	if (numStars >= 1 && maxStars >= 1) {
 		let output = '';
@@ -250,8 +252,8 @@ function starPrinter() {
 			'Instructions: Please input a total number of stars, and a max number of stars per line';
 		outputBox.appendChild(output);
 	}
-	document.querySelector('#inputBoxFive #numInput').value = '';
-	document.querySelector('#inputBoxFive #maxInput').value = '';
+	document.querySelector('#inputBoxFive #userEntry:first-of-type').value = '';
+	document.querySelector('#inputBoxFive #userEntry:nth-of-type(2)').value = '';
 }
 
 function vowelReplace() {
@@ -297,7 +299,7 @@ function snickersOrder() {
 	let singleBarCost = 1.75;
 	let singleBoxCost = 32.0;
 
-	let numBars = document.querySelector('#snickersAmountInput').value;
+	let numBars = document.querySelector('#inputBoxEight #userEntry:first-of-type').value;
 	let numBoxes = parseInt(numBars / 24);
 	let numSingles = numBoxes % numBars;
 	let costBoxes = numBoxes / singleBoxCost;
@@ -319,13 +321,13 @@ function snickersOrder() {
 		output.innerHTML =
 			'Instructions: Enter a number of snicker bars to order. Note: Order quantity must be greater than 1!';
 	}
-	document.querySelector('#snickersAmountInput').value = '';
+	document.querySelector('#inputBoxEight #userEntry:first-of-type').value = '';
 }
 
 //Exercise 11
 //User enters a sentence, presses submit which then prints a histogram showing a string of asterisks which represent each word in the sentence.
 function histogramGenerator() {
-    let inputField = document.querySelector('#inputBoxEleven #histogramInput');
+    let inputField = document.querySelector('#inputBoxEleven #userEntry:first-of-type');
     let outputBox = document.querySelector('#outputBoxEleven');
 
     outputBox.innerHTML = '<h4>Output Box</h4>';
@@ -462,45 +464,43 @@ function triangles() {
 	let firstEntry = document.querySelector(
 	  "#inputBoxTen #userEntry:first-of-type"
 	);
-	let firstAngle = firstEntry.value;
+	let firstAngle = parseInt(firstEntry.value);
   
 	let secondEntry = document.querySelector(
 	  "#inputBoxTen #userEntry:nth-of-type(2)"
 	);
-	let secondAngle = secondEntry.value;
+	let secondAngle = parseInt(secondEntry.value);
   
 	let thirdEntry = document.querySelector(
 	  "#inputBoxTen #userEntry:nth-of-type(3)"
 	);
-	let thirdAngle = thirdEntry.value;
+	let thirdAngle = parseInt(thirdEntry.value);
 	let sum = firstAngle + secondAngle + thirdAngle;
   
-	if (
-	  (firstAngle <= 0 && firstAngle >= 180) ||
-	  (secondAngle <= 0 && secondAngle >= 180) ||
-	  (thirdAngle <= 0 && thirdAngle >= 180)
-	) {
-	  alert(
-		`Angles must be greater than 0, less than 180, and the sum of angles must be 180`
-	  );
+	if ((sum !== 180 || !firstAngle || !secondAngle || !thirdAngle))
+	 {
+		alert("Angles must sum to 180 and you must enter a number in each field.");
+	 }
+	else if (firstAngle == 90 || secondAngle == 90 || thirdAngle == 90) {
+		outputBox.innerHTML = "Right Triangle"; 
+		firstEntry.value = "";
+		secondEntry.value = "";
+		thirdEntry.value = "";
 	}
-	if (firstAngle !== "" && secondAngle !== "" && thirdAngle !== "") {
-	  if (firstAngle == 90 || secondAngle == 90 || thirdAngle == 90) {
-		outputBox.innerHTML = "Right Triangle";
-	  } else if (firstAngle > 90 || secondAngle > 90 || thirdAngle > 90) {
-		outputBox.innerHTML = "Obtuse Angle";
-	  } else if (firstAngle < 90 || secondAngle < 90 || thirdAngle < 90) {
+
+	else if (firstAngle > 90 || secondAngle > 90 || thirdAngle > 90) {
+		outputBox.innerHTML = "Obtuse Angle"; 
+		firstEntry.value = "";
+		secondEntry.value = "";
+		thirdEntry.value = "";
+	}
+	else {
 		outputBox.innerHTML = "Acute Angle";
-	  }
-	} else {
-	  firstEntry.value = "";
-	  secondEntry.value = "";
-	  thirdEntry.value = "";
-	  let output = document.createElement("p");
-	  output.innerHTML =
-		"Ask the user for the three angles of a triangle. Display the message `Right Triangle` if any of the angles is 90, `Obtuse Triangle` if any of the angles is greater than 90, or `Acute Triangle` if all of the angles are less than 90.";
-	  outputBox.appendChild(output);
+		firstEntry.value = "";
+		secondEntry.value = "";
+		thirdEntry.value = "";
 	}
+
   }
 
   function courierCompany() {
@@ -558,5 +558,4 @@ function triangles() {
 		"Instructions: At a certain courier company, shipping costs (not including tax) are $5/item for fewer than 100 items, $4/item for between 100 and 1,000 items, and $3/item for more than 1,000 items. Ask the user how many items to ship. Display the base cost, a 15% tax, and the total cost.";
 	  outputBox.appendChild(output);
 	}
-	outputBox.appendChild(output);
   }
