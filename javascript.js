@@ -199,7 +199,7 @@ function numberOfMatchingKeys() {
 	);
 	let firstValues = firstEntry.value;
 	//Variable to seperate values with comma
-	let commaSeperate = firstValues.split(',');
+	let commaSeperate = firstValues.split(', ');
 	//Variable for user entry two
 	let secondEntry = document.querySelector(
 		'#inputBoxThree #userEntry:nth-of-type(2)'
