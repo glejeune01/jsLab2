@@ -571,13 +571,13 @@ function triangles() {
 		thirdEntry.value = '';
 	} else if (firstAngle > 90 || secondAngle > 90 || thirdAngle > 90) {
 		//Output result
-		outputBox.innerHTML = 'Obtuse Angle';
+		outputBox.innerHTML = 'Obtuse Triangle';
 		//Clear entries
 		firstEntry.value = '';
 		secondEntry.value = '';
 		thirdEntry.value = '';
 	} else {
-		outputBox.innerHTML = 'Acute Angle';
+		outputBox.innerHTML = 'Acute Triangle';
 		//Output result
 		//Clear entries
 		firstEntry.value = '';
