@@ -52,6 +52,7 @@ window.onload = function () {
 					break;
 				case 'exerciseSeven':
 					console.log('do a 7 dance');
+					courierCompany();
 					break;
 				case 'exerciseEight':
 					console.log('do a 8 dance');
@@ -63,6 +64,7 @@ window.onload = function () {
 					break;
 				case 'exerciseTen':
 					console.log('do a 10 dance');
+					triangles();
 					break;
 				case 'exerciseEleven':
 					console.log('do a 11 dance');
@@ -120,31 +122,44 @@ function minMaxRange() {
 }
 
 function comSepValues() {
-	let outputBox = document.querySelector('#outputBox2');
+	let outputBox = document.querySelector('#outputBoxTwo');
 	outputBox.innerHTML = '<h4>Output box</h4>';
 
-	let input = document.querySelector('#userEntry').value;
+	let entry = document.querySelector('#inputBoxTwo #userEntry');
+	let value = entry.value;
 
-	if (input !== '') {
-		let values = input.split(',').map(Number);
+	if (value !== '') {
+		let values = value.split(',').map(Number);
 		let count = values.length;
 		let total = values.reduce((a, b) => a + b, 0);
 		let average = total / count;
 		let smallest = Math.min(...values);
 		let largest = Math.max(...values);
 
-		document.querySelector('#numOfValues').textContent =
-			'Number of values: ' + count;
-		document.querySelector('#total').textContent = 'Total: ' + total;
-		document.querySelector('#average').textContent = 'Average: ' + average;
-		document.querySelector('#smallest').textContent = 'Smallest: ' + smallest;
-		document.querySelector('#largest').textContent = 'Largest: ' + largest;
+		let output = document.createElement('p');
+		outputBox.innerHTML =
+			'Number of values: ' +
+			count +
+			'<br>' +
+			'Total: ' +
+			total +
+			'<br>' +
+			'Average: ' +
+			average +
+			'<br>' +
+			'Smallest: ' +
+			smallest +
+			'<br>' +
+			'Largest: ' +
+			largest;
+		outputBox.appendChild(output);
 	} else {
-		let output = document.createElement('a');
+		let output = document.createElement('p');
 		output.innerHTML =
 			'Instructions: Ask the user for a comma-separated set of numeric values. Display the number of values entered, the total, the average, the smallest value, and the largest value.';
 		outputBox.appendChild(output);
 	}
+	entry.value = '';
 }
 
 function numberOfMatchingKeys() {

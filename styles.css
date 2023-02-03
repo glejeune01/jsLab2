@@ -90,13 +90,15 @@ h4 {
 }
 
 #inputBox,
-#inputBox2,
+#inputBoxTwo,
 #inputBoxThree,
 #inputBoxFour,
 #inputBoxFive,
 #inputBoxSix,
+#inputBoxSeven,
 #inputBoxEight,
 #inputBoxNine,
+#inputBoxTen,
 #inputBoxEleven,
 #inputBoxTwelve,
 #inputBoxThirteen {
@@ -114,13 +116,15 @@ h4 {
 }
 
 #outputBox,
-#outputBox2,
+#outputBoxTwo,
 #outputBoxThree,
 #outputBoxFour,
 #outputBoxFive,
 #outputBoxSix,
+#outputBoxSeven,
 #outputBoxEight,
 #outputBoxNine,
+#outputBoxTen,
 #outputBoxEleven,
 #outputBoxTwelve,
 #outputBoxThirteen   {
