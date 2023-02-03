@@ -59,7 +59,7 @@ window.onload = function () {
 					break;
 				case 'exerciseNine':
 					console.log('do a 9 dance');
-          binaryToBaseTen();
+					binaryToBaseTen();
 					break;
 				case 'exerciseTen':
 					console.log('do a 10 dance');
@@ -70,11 +70,11 @@ window.onload = function () {
 					break;
 				case 'exerciseTwelve':
 					console.log('do a 12 dance');
-          minCharacterString();
+					minCharacterString();
 					break;
 				case 'exerciseThirteen':
 					console.log('do a 13 dance');
-          compareArrays();
+					compareArrays();
 					break;
 				default:
 					return;
@@ -91,7 +91,9 @@ function minMaxRange() {
 	let firstEntry = document.querySelector('#inputBox #userEntry:first-of-type');
 	let firstValue = parseInt(firstEntry.value);
 
-	let secondEntry = document.querySelector('#inputBox #userEntry:nth-of-type(2)');
+	let secondEntry = document.querySelector(
+		'#inputBox #userEntry:nth-of-type(2)'
+	);
 	let secondValue = parseInt(secondEntry.value);
 
 	if (firstEntry.value !== '' && secondEntry.value !== '') {
@@ -283,9 +285,9 @@ function snickersOrder() {
 	let singleBoxCost = 32.0;
 
 	let numBars = document.querySelector('#snickersAmountInput').value;
-	let numBoxes = parseInt(numBars / 24);
-	let numSingles = numBoxes % numBars;
-	let costBoxes = numBoxes / singleBoxCost;
+	let numBoxes = Math.floor(numBars / 24);
+	let numSingles = numBars % 24;
+	let costBoxes = numBoxes * singleBoxCost;
 	let costSingles = numSingles * singleBarCost;
 	let totalCost = costBoxes + costSingles;
 
@@ -297,144 +299,156 @@ function snickersOrder() {
 		output.innerHTML += '<br>';
 		output.innerHTML += 'Cost of Boxes: ' + costBoxes;
 		output.innerHTML += '<br>';
+		output.innerHTML += 'Cost of Boxes: ' + costSingles;
+		output.innerHTML += '<br>';
 		output.innerHTML += 'Total Cost: ' + totalCost;
 		outputBox.appendChild(output);
 	} else {
 		let output = document.createElement('p');
 		output.innerHTML =
 			'Instructions: Enter a number of snicker bars to order. Note: Order quantity must be greater than 1!';
+		outputBox.appendChild(output);
 	}
 	document.querySelector('#snickersAmountInput').value = '';
 }
-
+//Exercise 11
+//User enters a sentence, presses submit which then prints a histogram showing a string of asterisks which represent each word in the sentence.
 function histogramGenerator() {
+	let inputField = document.querySelector('#inputBoxEleven #histogramInput');
 	let outputBox = document.querySelector('#outputBoxEleven');
+
 	outputBox.innerHTML = '<h4>Output Box</h4>';
 
-	let userSentence = document.querySelector('#histogramInput').value;
-	let words = userSentence.split(' ');
-	let histogram = {};
+	let sentence = inputField.value;
 
-	if (userSentence) {
-		for (let i = 0; i < words.length; i++) {
-			let word = words[i];
-			let length = word.length;
-			if (histogram[length]) {
-				histogram[length]++;
-			} else {
-				histogram[length] = 1;
+	if (sentence !== '') {
+		let words = sentence.split(' ');
+		let histogram = '';
+
+		for (let word of words) {
+			let asterisks = '';
+			for (let i = 0; i < word.length; i++) {
+				asterisks += '*';
 			}
+			histogram += asterisks + '<br>';
 		}
-		let output = '';
-		for (let length in histogram) {
-			output += `<p>${'*'.repeat(histogram[length])} (${length})</p>`;
+
+		outputBox.innerHTML += histogram;
+	} else {
+		let outputMessage = document.createElement('p');
+		outputMessage.innerHTML = 'Instructions: Please input a sentence.';
+		outputBox.appendChild(outputMessage);
+	}
+
+	inputField.value = '';
+}
+
+function binaryToBaseTen() {
+	let outputBox = document.querySelector('#outputBoxNine');
+	outputBox.innerHTML = '<h4>Output box</h4>';
+
+	let entry = document.querySelector('#inputBoxNine #userEntry:first-of-type');
+	let value = entry.value;
+	let number = 0;
+	let exponant = 0;
+	let responseOne = '';
+	let responseTwo = '';
+
+	if (value !== '') {
+		for (let i = value.length - 1; i >= 0; i--) {
+			let digit = value.charAt(i);
+			if (digit !== '0' && digit !== '1') {
+				output = document.createElement('p');
+				output.innerHTML = 'Please enter a valid binary number.';
+				outputBox.appendChild(output);
+				entry.value = '';
+				return;
+			}
+			if (digit === '1') {
+				number += Math.pow(2, exponant);
+				responseOne = '2^' + exponant + '+' + responseOne;
+				responseTwo = Math.pow(2, exponant) + '+' + responseTwo;
+			}
+			exponant++;
 		}
-		outputBox.innerHTML += output;
+		responseOne = responseOne.substring(0, responseOne.length - 1);
+		responseTwo = responseTwo.substring(0, responseTwo.length - 1);
+
+		output = document.createElement('p');
+		output.innerHTML =
+			value + ' = ' + responseOne + ' = ' + responseTwo + ' = ' + number;
+		outputBox.appendChild(output);
+		entry.value = '';
 	} else {
 		let output = document.createElement('p');
-		output.innerHTML =
-			'Instructions: Enter a sentence. Once you are done, press the submit button to see a histogram of the word lengths in your sentence!';
+		output.innerHTML = 'Instructions: Please enter a valid binary number.';
 		outputBox.appendChild(output);
 	}
 }
 
+function minCharacterString() {
+	let outputBox = document.querySelector('#outputBoxTwelve');
+	outputBox.innerHTML = '<h4>Output box</h4>';
 
-function binaryToBaseTen() {
-  let outputBox = document.querySelector("#outputBoxNine");
-  outputBox.innerHTML = "<h4>Output box</h4>";
+	let entryNum = document.querySelector(
+		'#inputBoxTwelve #userEntry:first-of-type'
+	);
+	let valueNum = entryNum.value;
+	let entryString = document.querySelector(
+		'#inputBoxTwelve #userEntry:nth-of-type(2)'
+	);
+	let valueString = entryString.value;
+	let seperatedString = valueString.split(' ');
+	let resultString = '';
 
-  let entry = document.querySelector("#inputBoxNine #userEntry:first-of-type");
-  let value = entry.value;
-  let number = 0;
-  let exponant = 0;
-  let responseOne = "";
-  let responseTwo = "";
-
-  if (value !== "") {
-    for (let i = value.length - 1; i >= 0; i--) {
-      let digit = value.charAt(i);
-      if (digit !== '0' && digit !== '1') {
-        output = document.createElement('p');
-        output.innerHTML = "Please enter a valid binary number.";
-        outputBox.appendChild(output);
-        entry.value = "";
-        return;
-      }
-      if (digit === '1') {
-        number += Math.pow(2, exponant);
-        responseOne = "2^" + exponant + "+" + responseOne;
-        responseTwo = Math.pow(2, exponant) + "+" + responseTwo;
-      }
-      exponant++;
-      
-    }
-    responseOne = responseOne.substring(0, responseOne.length-1);
-    responseTwo = responseTwo.substring(0, responseTwo.length-1);
-
-    output = document.createElement('p');
-    output.innerHTML = value + " = " + responseOne + " = " + responseTwo + " = " + number;
-    outputBox.appendChild(output);
-    entry.value = "";
-  }
-  else 
-  {
-    let output = document.createElement('p');
-    output.innerHTML = "Instructions: Please enter a valid binary number."
-    outputBox.appendChild(output);
-  }
+	if (valueNum > 0 && valueString !== '') {
+		for (i = 0; i < seperatedString.length; i++) {
+			if (seperatedString[i].length >= valueNum) {
+				resultString += seperatedString[i] + ' ';
+			}
+		}
+		let output = document.createElement('p');
+		output.innerHTML = 'Result: ' + resultString;
+		outputBox.appendChild(output);
+	} else {
+		output = document.createElement('p');
+		output.innerHTML =
+			'Instructions: Please enter a number greater then 0, and a string.';
+		outputBox.appendChild(output);
+	}
 }
 
-function minCharacterString()
-{
-  let outputBox = document.querySelector("#outputBoxTwelve");
-  outputBox.innerHTML = "<h4>Output box</h4>";
+function compareArrays() {
+	let outputBox = document.querySelector('#outputBoxThirteen');
+	outputBox.innerHTML = '<h4>Output box</h4>';
 
-  let entryNum = document.querySelector("#inputBoxTwelve #userEntry:first-of-type");
-  let valueNum = entryNum.value;
-  let entryString = document.querySelector("#inputBoxTwelve #userEntry:nth-of-type(2)");
-  let valueString = entryString.value;
-  let seperatedString = valueString.split(" ");
-  let resultString= "";
+	let firstArray = document.querySelector(
+		'#inputBoxThirteen #userEntry:first-of-type'
+	);
+	let firstSplitArray = firstArray.value.split(',');
+	let secondArray = document.querySelector(
+		'#inputBoxThirteen #userEntry:nth-of-type(2)'
+	);
+	let secondSplitArray = secondArray.value.split(',');
+	let result = 0;
 
-  if (valueNum > 0 && valueString !== "") {
-    for(i=0; i<seperatedString.length; i++){
-      if (seperatedString[i].length >= valueNum){
-        resultString+=seperatedString[i] + " "; 
-      }
-    }
-    let output = document.createElement('p');
-    output.innerHTML = "Result: " + resultString;
-    outputBox.appendChild(output);
-  }
-  else {
-    output = document.createElement('p');
-    output.innerHTML = "Instructions: Please enter a number greater then 0, and a string."
-    outputBox.appendChild(output);
-  }
-}
-
-function compareArrays(){
-  let outputBox = document.querySelector("#outputBoxThirteen");
-  outputBox.innerHTML = "<h4>Output box</h4>";
-
-  let firstArray = document.querySelector("#inputBoxThirteen #userEntry:first-of-type");
-  let firstSplitArray = firstArray.value.split(",");
-  let secondArray = document.querySelector("#inputBoxThirteen #userEntry:nth-of-type(2)");
-  let secondSplitArray = secondArray.value.split(",");
-  let result = 0;
-
-  if(firstArray.value !== "" && secondArray.value !== "" && firstSplitArray.length === secondSplitArray.length){
-    for(i=0; i<firstSplitArray.length; i++){
-      result+= parseInt(firstSplitArray[i]) + parseInt(secondSplitArray[i]) + ", ";
-    }
-    result = result.slice(1, -2);
-    let output = document.createElement('p');
-    output.innerHTML = "Results: " + result;
-    outputBox.appendChild(output);
-  }
-  else{
-    output = document.createElement('p');
-    output.innerHTML = "Instructions: Please enter two arrays of numbers seperated by commas. Ensure both arrays are the same length."
-    outputBox.appendChild(output);
-  }
+	if (
+		firstArray.value !== '' &&
+		secondArray.value !== '' &&
+		firstSplitArray.length === secondSplitArray.length
+	) {
+		for (i = 0; i < firstSplitArray.length; i++) {
+			result +=
+				parseInt(firstSplitArray[i]) + parseInt(secondSplitArray[i]) + ', ';
+		}
+		result = result.slice(1, -2);
+		let output = document.createElement('p');
+		output.innerHTML = 'Results: ' + result;
+		outputBox.appendChild(output);
+	} else {
+		output = document.createElement('p');
+		output.innerHTML =
+			'Instructions: Please enter two arrays of numbers seperated by commas. Ensure both arrays are the same length.';
+		outputBox.appendChild(output);
+	}
 }
