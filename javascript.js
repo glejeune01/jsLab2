@@ -447,8 +447,8 @@ function snickersOrder() {
 	).value;
 	//Formulas for variables used in exercise
 	let numBoxes = parseInt(numBars / 24);
-	let numSingles = numBoxes % numBars;
-	let costBoxes = numBoxes / singleBoxCost;
+	let numSingles = numBars % 24;
+	let costBoxes = numBoxes * singleBoxCost;
 	let costSingles = numSingles * singleBarCost;
 	let totalCost = costBoxes + costSingles;
 	//If value is greater than or equal to 1
@@ -463,6 +463,8 @@ function snickersOrder() {
 		output.innerHTML += 'Number of Singles: ' + numSingles;
 		output.innerHTML += '<br>';
 		output.innerHTML += 'Cost of Boxes: ' + costBoxes;
+		output.innerHTML += '<br>';
+		output.innerHTML += 'Cost of Singles: ' + costSingles;
 		output.innerHTML += '<br>';
 		output.innerHTML += 'Total Cost: ' + totalCost;
 		outputBox.appendChild(output);
