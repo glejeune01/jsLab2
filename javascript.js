@@ -468,14 +468,16 @@ function snickersOrder() {
 		output.innerHTML += '<br>';
 		output.innerHTML += 'Total Cost: ' + totalCost;
 		outputBox.appendChild(output);
+
 	} else {
 		//Display the instructions of the exercise in the output box
 		let output = document.createElement('p');
 		output.innerHTML =
 			'Instructions: Enter a number of snicker bars to order. Note: Order quantity must be greater than 1!';
+
 	}
 	//Clear the input box
-	document.querySelector('#inputBoxEight #userEntry:first-of-type').value = '';
+	document.querySelector('#inputBoxEight #userEntry:first-of-type').value = "";
 }
 
 //Exercise 9
