@@ -322,35 +322,36 @@ function snickersOrder() {
 	document.querySelector('#snickersAmountInput').value = '';
 }
 
+//Exercise 11
+//User enters a sentence, presses submit which then prints a histogram showing a string of asterisks which represent each word in the sentence.
 function histogramGenerator() {
-	let outputBox = document.querySelector('#outputBoxEleven');
-	outputBox.innerHTML = '<h4>Output Box</h4>';
+    let inputField = document.querySelector('#inputBoxEleven #histogramInput');
+    let outputBox = document.querySelector('#outputBoxEleven');
 
-	let userSentence = document.querySelector('#histogramInput').value;
-	let words = userSentence.split(' ');
-	let histogram = {};
+    outputBox.innerHTML = '<h4>Output Box</h4>';
 
-	if (userSentence) {
-		for (let i = 0; i < words.length; i++) {
-			let word = words[i];
-			let length = word.length;
-			if (histogram[length]) {
-				histogram[length]++;
-			} else {
-				histogram[length] = 1;
-			}
-		}
-		let output = '';
-		for (let length in histogram) {
-			output += `<p>${'*'.repeat(histogram[length])} (${length})</p>`;
-		}
-		outputBox.innerHTML += output;
-	} else {
-		let output = document.createElement('p');
-		output.innerHTML =
-			'Instructions: Enter a sentence. Once you are done, press the submit button to see a histogram of the word lengths in your sentence!';
-		outputBox.appendChild(output);
-	}
+    let sentence = inputField.value;
+
+    if (sentence !== '') {
+        let words = sentence.split(' ');
+        let histogram = '';
+
+        for (let word of words) {
+            let asterisks = '';
+            for (let i = 0; i < word.length; i++) {
+                asterisks += '*';
+            }
+            histogram += asterisks + '<br>';
+        }
+
+        outputBox.innerHTML += histogram;
+    } else {
+        let outputMessage = document.createElement('p');
+        outputMessage.innerHTML = 'Instructions: Please input a sentence.';
+        outputBox.appendChild(outputMessage);
+    }
+
+    inputField.value = '';
 }
 
 
